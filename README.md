@@ -197,7 +197,7 @@ are included inline in the html with each form field.
     But with many form fields this will be less efficient.
 
 + 'staticfiles':
-    @import the css/js from {{STATIC_URL}}/ajax_selects using `django.contrib.staticfiles`
+    @import the css/js from {{STATIC_URL}} using `django.contrib.staticfiles`
     Requires staticfiles to be installed and to run its management command to collect files.
     This still imports the css/js multiple times and is thus inefficient but otherwise harmless.
 
