@@ -4,6 +4,7 @@ from django.contrib.admin import site
 from django.db import models
 from django.http import HttpResponse
 from django.utils import simplejson
+from django.utils.safestring import mark_safe
 
 
 def ajax_lookup(request,channel):
