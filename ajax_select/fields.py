@@ -44,7 +44,14 @@ class AutoCompleteSelectWidget(forms.widgets.TextInput):
                 obj = objs[0]
             except IndexError:
                 raise Exception("%s cannot find object:%s" % (lookup, value))
-            display = lookup.format_item_display(obj)
+            display = mark_safe(
+                u'<a target="_blank" href="../../../%s/%s/%s/">%s</a>' %\
+                      (
+                       obj._meta.app_label,
+                       obj._meta.object_name.lower(),
+                       obj.pk, lookup.format_item_display(obj)
+                      )
+                )
             current_repr = mark_safe( """new Array("%s",%s)""" % (escapejs(display),obj.pk) )
         else:
             current_repr = 'null'
