@@ -32,7 +32,11 @@ $.fn.autocompleteselect = function(options) {
 			}
 			$this.val(ui.item.pk);
 			$text.val('');
-			addKiller(ui.item.repr);
+            if (ui.item.url) {
+                addKiller(ui.item.url);
+            } else {
+                addKiller(ui.item.repr);
+            }
 			$deck.trigger("added");
 
 			return false;

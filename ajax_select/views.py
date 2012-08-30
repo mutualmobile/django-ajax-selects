@@ -36,7 +36,15 @@ def ajax_lookup(request,channel):
             'pk': unicode(getattr(item,'pk',None)),
             'value': lookup.get_result(item),
             'match' : lookup.format_match(item),
-            'repr': lookup.format_item_display(item)
+            'repr': lookup.format_item_display(item),
+            'url': mark_safe(
+                u'<a target="_blank" href="../../../%s/%s/%s/">%s</a>' %\
+                      (
+                       item._meta.app_label,
+                       item._meta.object_name.lower(),
+                       item.pk, lookup.format_item_display(item)
+                      )
+                )
         } for item in instances
     ])
 
